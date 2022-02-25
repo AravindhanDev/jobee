@@ -1,0 +1,326 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/singlelistings.css" />
+
+<div
+	class="container-fluid back-box"
+	style="display: flex; justify-content: flex-end; align-items: flex-end"
+>
+	<div class="back" onclick="history.go(-1)">
+		<i class="bi bi-backspace-fill" style="font-size: 1.4rem"></i>
+	</div>
+</div>
+<div class="container-fluid data-fluid mb-5" id="<%= id %>">
+	<div class="row row-head" id="<%= currentEmployer %>">
+		<div class="col-lg-12">
+			<div class="single-listings" id="<%= user %>">
+				<h4 class="heading" id="heading" style="color: #7267cb">
+					<%= data.profile %> at <% if (data.orgwebsite != '') { %>
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="<%= data.orgwebsite %>"
+						><%= data.orgname %></a
+					>
+					<% } else if (data.orgsocial != '') { %>
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="<%= data.orgsocial %>"
+						><%= data.orgname %></a
+					>
+					<% } else { %>
+					<a href="javascript:void(0)"><%= data.orgname %></a>
+					<% } %>
+				</h4>
+				<div
+					class="single-container"
+					id="<%= currentStudent %>"
+					style="margin-top: 1.5rem"
+				>
+					<h5 id="profile"><%= data.profile %></h5>
+					<% if (data.orgwebsite != '') { %>
+					<a
+						href="<%= data.orgwebsite %>"
+						target="_blank"
+						rel="noopener noreferrer"
+						id="orgname"
+					>
+						<i class="bi bi-building"></i> &nbsp; <%= data.orgname %>
+						<i class="bi bi-arrow-up-right"></i>
+					</a>
+					<% } else if (data.orgsocial != '') { %>
+					<a
+						href="<%= data.orgsocial %>"
+						target="_blank"
+						rel="noopener noreferrer"
+						id="orgname"
+					>
+						<i class="bi bi-building"></i> &nbsp; <%= data.orgname %>
+						<i class="bi bi-arrow-up-right"></i>
+					</a>
+					<% } else { %>
+					<a href="javascript:void(0)"><%= data.orgname %></a>
+					<% } %> <% if (data.type == 'Work from home') {%>
+					<p class="mt-4" id="remote">
+						<i class="bi bi-house-door-fill"></i>
+						&nbsp;&nbsp;&nbsp;Remote
+					</p>
+					<% } else {%>
+					<p class="mt-4" id="location">
+						<i class="bi bi-geo-alt-fill"></i>
+						&nbsp; <%= data.orgcity %>
+					</p>
+					<% } %>
+
+					<div class="row">
+						<div class="col-lg-4 col-sm-6">
+							<span style="font-size: 0.9rem" class="text-muted"
+								><i class="far fa-play-circle"></i> &nbsp; START DATE</span
+							>
+							<span>Immediately</span>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<span style="font-size: 0.9rem" class="text-muted"
+								><i class="far fa-money-bill-alt"></i> &nbsp; CTC</span
+							>
+							<span id="salary">
+								<% let jobSalary = "", internSalary = "", low = "", high = "" %>
+								<% if (data.persalary == "Month") { %> <% jobSalary =
+								data.salary * 12; %> <% internSalary = data.salary; %> <% if
+								(jobSalary.toString().length == 6) { %> <% high =
+								jobSalary.toString().substr(0, 1); %> <% low =
+								jobSalary.toString().substr(1, 1); %> <% } if
+								(jobSalary.toString().length == 7) { %> <% high =
+								jobSalary.toString().substr(0, 2); %> <% low =
+								jobSalary.toString().substr(2, 1); %> <% } %> <% jobSalary =
+								`${high}.${low} - ${high} LPA`; %> <% internSalary =
+								`${internSalary}/${data.persalary}`; %> <% } else { %> <%
+								jobSalary = data.salary * 52; %> <% internSalary = data.salary;
+								%> <% if (jobSalary.toString().length == 6) { %> <% high =
+								jobSalary.toString().substr(0, 1); %> <% low =
+								jobSalary.toString().substr(1, 1); %> <% } if
+								(jobSalary.toString().length == 7) { %> <% high =
+								jobSalary.toString().substr(0, 2); %> <% low =
+								jobSalary.toString().substr(2, 1); %> <% } %> <% jobSalary =
+								`${high}.${low} - ${high} LPA`; %> <% internSalary =
+								`${internSalary}/${data.persalary}`; %> <% } %> <% if
+								(data.typework == "Full Time Job") { %> &#8377; <%= jobSalary %>
+								<% } else { %> &#8377; <%= internSalary %> <% } %>
+							</span>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<span style="font-size: 0.9rem" class="text-muted"
+								><i class="fas fa-hourglass-half"></i> &nbsp; APPLY BY</span
+							>
+							<span id="applyby">
+								<%= new Date(data.applyby).getDate() %> <%= new
+								Date(data.applyby).toLocaleDateString('en-us', {month: 'short'})
+								%>' <%= new Date(data.applyby).toLocaleDateString('en-us',
+								{year: '2-digit'}) %>
+							</span>
+						</div>
+					</div>
+					<div class="job-details" style="margin: 2.1rem 0">
+						<span class="jobtype" id="jobtype"><%= data.typework %></span>
+					</div>
+					<div class="dropdown-divider"></div>
+					<div class="about mt-4" id="about">
+						<div id="desc">
+							<h5 style="color: #7267cb">
+								About <% if (data.orgwebsite != '') { %>
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href="<%= data.orgwebsite %>"
+									><%= data.orgname %></a
+								>
+								<% } else if (data.orgsocial != '') { %>
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href="<%= data.orgsocial %>"
+									><%= data.orgname %></a
+								>
+								<% } else { %>
+								<a href="javascript:void(0)"><%= data.orgname %></a>
+								<% } %>
+							</h5>
+							<p><%= data.orgdescription %></p>
+						</div>
+
+						<% if (data.responsibilities != '') { %>
+						<div id="responsibility">
+							<h5 class="mt-5">
+								About the <%= data.typework == 'Internship' ? "internship" :
+								"work" %>
+							</h5>
+							<span class="text-muted">Key responsibilities</span>
+							<p class="mt-2"><%= data.responsibilities %></p>
+						</div>
+						<% } %>
+
+						<h5 class="mt-5">Skills Required</h5>
+						<div class="skill-required row mt-3" id="skills">
+							<% skills.forEach((skill) => { %>
+							<div class="col-lg-3 col-md-6">
+								<div class="skill-details">
+									<span style="margin: 0" class="jobtype"><%= skill %></span>
+								</div>
+							</div>
+							<% }) %>
+						</div>
+
+						<% if (data.whocanapply) { %>
+						<div id="whocanapply">
+							<h5 class="mt-4">Who can apply</h5>
+							<%= data.whocanapply %>
+						</div>
+						<% } %>
+
+						<div id="salary">
+							<h5 class="mt-4">Salary</h5>
+							<p>
+								Annual CTC: &nbsp;
+								<span class="annualctc">
+									<% let jSalary = "", iSalary = "", l = "", h = "" %> <% if
+									(data.persalary == "Month") { %> <% jSalary = data.salary *
+									12; %> <% iSalary = data.salary; %> <% if
+									(jSalary.toString().length == 6) { %> <% h =
+									jSalary.toString().substr(0, 1); %> <% l =
+									jSalary.toString().substr(1, 1); %> <% } if
+									(jSalary.toString().length == 7) { %> <% h =
+									jSalary.toString().substr(0, 2); %> <% l =
+									jSalary.toString().substr(2, 1); %> <% } %> <% jSalary =
+									`${h}.${l} - ${h} LPA`; %> <% iSalary =
+									`${iSalary}/${data.persalary}`; %> <% } else { %> <% jSalary =
+									data.salary * 52; %> <% iSalary = data.salary; %> <% if
+									(jSalary.toString().length == 6) { %> <% h =
+									jSalary.toString().substr(0, 1); %> <% l =
+									jSalary.toString().substr(1, 1); %> <% } if
+									(jSalary.toString().length == 7) { %> <% h =
+									jSalary.toString().substr(0, 2); %> <% l =
+									jSalary.toString().substr(2, 1); %> <% } %> <% jSalary =
+									`${h}.${l} - ${h} LPA`; %> <% iSalary =
+									`${iSalary}/${data.persalary}`; %> <% } %> <% if
+									(data.typework == "Full Time Job") { %> &#8377; <%= jSalary %>
+									<% } else { %> &#8377; <%= iSalary %> <% } %>
+								</span>
+								<br />
+								LPA Annual CTC breakup: <br />
+								1. Fixed component: 80% <br />
+								2. Variable component: 20%
+							</p>
+						</div>
+						<div class="perksbox">
+							<h5 class="mt-5">Perks</h5>
+							<div class="perks row mt-3" id="perks">
+								<% if (data.isflexible === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Flexible work hours</span
+										>
+									</div>
+								</div>
+								<% } if (data.isdresscode === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Informal dress code</span
+										>
+									</div>
+								</div>
+								<% } if (data.isfivedays === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype">5 Days a week</span>
+									</div>
+								</div>
+								<% } if (data.isbonus === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Performance bonus</span
+										>
+									</div>
+								</div>
+								<% } if (data.ispaidleave === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Paid sick leaves</span
+										>
+									</div>
+								</div>
+								<% } if (data.isinsurance === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Insurance plans</span
+										>
+									</div>
+								</div>
+								<% } if (data.isdiscount === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Corporate discounts</span
+										>
+									</div>
+								</div>
+								<% } if (data.isretirement === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Retirement plans</span
+										>
+									</div>
+								</div>
+								<% } if (data.istraining === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Employement traning</span
+										>
+									</div>
+								</div>
+								<% } if (data.isprograms === 'true') { %>
+								<div class="col-lg-4 col-md-6">
+									<div class="skill-details">
+										<span style="margin: 0" class="jobtype"
+											>Wellness programs</span
+										>
+									</div>
+								</div>
+								<% } %>
+							</div>
+						</div>
+
+						<% if (data.opening != '') { %>
+						<div id="openings">
+							<h5 class="mt-4">Number of Openings</h5>
+							<p><%= data.opening %></p>
+						</div>
+						<% } %> <% if (acctype == 'Student') { %>
+						<div class="col-lg-12 mt-4" style="text-align: center">
+							<button
+								disabled
+								class="btn btn-violet px-3"
+								onclick="location.href='/coverletter/<%= id %>'"
+								id="checkapply"
+								style="color: #fff"
+							>
+								Apply now
+							</button>
+						</div>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="../js/singlelistings.js"></script>
+
+<%- include('./partials/footer.ejs') -%>

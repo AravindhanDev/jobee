@@ -1,0 +1,106 @@
+.container-fluid {
+	padding: 1rem 3rem;
+}
+
+.single-listings {
+	background-color: #fff;
+	padding: 2rem;
+	border-radius: 8px;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+#apply {
+	transition: all 0.4s;
+}
+
+.col-lg-4 {
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.loading {
+	animation: loading 1s infinite;
+}
+
+@keyframes loading {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.jobtype {
+	border: 1px solid #eee;
+	color: #6e3cbc;
+	font-weight: 500;
+	box-shadow: 2px 2px 7px #eee, -2px -2px 7px #eee;
+	padding: 0.4rem 1rem;
+	border-radius: 30px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.skill-required div,
+.perks div {
+	margin-bottom: 0.9rem;
+}
+
+.skill-required div span,
+.perks div span {
+	margin: 2rem;
+	background-color: rgba(221, 221, 221, 0.6);
+	box-shadow: 2px 2px 7px #eee;
+	border: 1px solid #ddd;
+	transition: all 0.5s;
+}
+
+.skill-required div span:hover,
+.perks div span:hover {
+	box-shadow: 2px 2px 5px rgba(110, 60, 188, 0.6);
+}
+
+p {
+	text-align: justify;
+}
+
+.skill-details {
+	font-size: 0.9rem;
+}
+
+ol,
+ul {
+	padding: 16px;
+}
+
+@media (max-width: 700px) {
+	.container-fluid {
+		padding: 1rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.skill-required {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 500px) {
+	.heading {
+		font-size: 1.2rem;
+	}
+	.col-lg-4 {
+		display: flex;
+		flex-direction: column;
+		margin-top: 1.3rem;
+	}
+	.container-fluid {
+		padding: 0;
+	}
+}

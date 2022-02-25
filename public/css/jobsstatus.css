@@ -1,0 +1,76 @@
+.container-fluid {
+	margin-top: 2.5rem;
+}
+
+.back {
+	position: absolute;
+	top: 0;
+}
+
+.table-container {
+	background-color: #fff;
+	padding: 1.5rem;
+	border-radius: 10px;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+td span.status {
+	background-color: #ccc;
+	padding: 0.4rem 1rem;
+	width: 16rem;
+	border-radius: 40px;
+	white-space: nowrap;
+}
+
+.h5 {
+	text-align: center;
+}
+
+tbody tr th span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+thead {
+	background-color: rgba(110, 60, 188, 0.2);
+}
+
+thead tr {
+	border-bottom: 0 !important;
+}
+
+thead tr th {
+	font-size: 0.95rem;
+}
+
+.status.success {
+	background-color: #2eb086;
+	color: #fff;
+	padding: 0.2rem 1rem;
+	border-radius: 40px;
+	white-space: nowrap;
+}
+
+.status.notselected {
+	background-color: #f8485e;
+	color: #fff;
+	padding: 0.2rem 1rem;
+	border-radius: 40px;
+	white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+	thead tr th {
+		font-size: 0.8rem;
+	}
+	tbody tr th {
+		font-size: 0.8rem;
+	}
+}
+@media (max-width: 450px) {
+	.h5 {
+		text-align: left;
+	}
+}

@@ -1,0 +1,80 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/jobsstatus.css" />
+<div
+	class="container-fluid"
+	style="display: flex; justify-content: flex-end; align-items: flex-end"
+>
+	<a class="back" href="/joblistings">
+		<i class="bi bi-backspace-fill" style="font-size: 1.4rem"></i>
+	</a>
+</div>
+<div class="container-fluid mt-3">
+	<div class="table-container mt-5 table-responsive">
+		<h5 class="h5">
+			Posted Jobs / Internships &nbsp;
+			<i class="bi bi-file-earmark-check"></i>
+		</h5>
+		<table class="table text-center" style="margin-top: 1.9rem">
+			<thead>
+				<tr>
+					<th>POSTED BY</th>
+					<th>PROFILE</th>
+					<th>POSTED ON</th>
+					<th>NUMBER OF APPLICANTS</th>
+					<th>RESPONSES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if (data.length != 0) { %> <% data.forEach((arr) => { %>
+				<tr>
+					<td>
+						<% if (arr.orgwebsite != '') { %>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="<%= arr.orgwebsite %>"
+							><%= arr.orgname %></a
+						>
+						<% } else if (arr.orgsocial != '') { %>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="<%= arr.orgsocial %>"
+							><%= arr.orgname %></a
+						>
+						<% } else { %>
+						<a href="javascript:void(0)"><%= arr.orgname %></a>
+						<% } %>
+					</td>
+					<td>
+						<a href="/singlelistings/<%= arr._id %>" style="font-weight: 500"
+							><%= arr.profile %> &nbsp;
+							<i class="bi bi-arrow-up-right-circle"></i
+						></a>
+					</td>
+					<td>
+						<%= new Date(arr.dateTime).getDate() %> <%= new
+						Date(arr.dateTime).toLocaleDateString('en-us', {month: 'short'}) %>'
+						<%= new Date(arr.dateTime).getFullYear().toString().slice(2) %>
+					</td>
+					<td><%= arr.opening %></td>
+					<td>
+						<a href="/jobsrequest/<%= arr._id %>">
+							<i class="bi bi-eye-fill"></i>
+							&nbsp; Responses
+						</a>
+					</td>
+				</tr>
+				<% }) %> <% } else { %>
+				<tr>
+					<td colspan="5">No Jobs Posted</td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<script src="../js/jobsposted.js"></script>
+
+<%- include('./partials/footer.ejs') -%>

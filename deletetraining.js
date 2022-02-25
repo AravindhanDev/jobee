@@ -1,0 +1,27 @@
+const deleteTraining = (app, Resume) => {
+	app.delete("/deletetraining/:profile/:org", async (req, res) => {
+		console.log(req.params.profile);
+		console.log(req.params.org);
+		let currentuser = await req.user._id;
+
+		try {
+			const json = await Resume.where("currentuser")
+				.equals(currentuser)
+				.select("training");
+
+			const data = json[0].training.filter((arr) => {
+				return arr.profile != req.params.profile || arr.org != req.params.org;
+			});
+
+			json[0].training = data;
+
+			json[0].save((err) => {
+				if (!err) res.send({ data: "training deleted" });
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	});
+};
+
+export default deleteTraining;

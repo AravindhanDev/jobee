@@ -1,0 +1,442 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/resumedetails.css" />
+<div
+	class="wrapper"
+	style="display: flex; flex-direction: column; justify-content: center"
+>
+	<div class="alert-msg d-none animate__animated animate__bounceInDown">
+		<div class="message">Welcome</div>= orgn
+	</div>
+	<div
+	class="container"
+	style="padding:1.5rem 0;background-color: transparent;box-shadow:none;display: flex; justify-content: flex-end; align-items: flex-end"
+>
+	<div class="back" onclick="history.go(-1)">
+		<i class="bi bi-backspace-fill" style="font-size: 1.4rem"></i>
+	</div>
+</div>
+	<% if (acctype == 'Student') { %>
+		<div class="container text-center" style="margin-top: 2rem;">
+			<h6 style="font-size: 1.1rem;">Below is your application for 
+				<span style="color: #6e3cbc;"><a href="/singlelistings/<%= jobId %>"><%= profile %></a></span> at 
+				<a href="<%= orgwebsite == '' ? 'javascript:void(0)' : orgwebsite %>" target="<%= orgwebsite == '' ? '' : '_blank' %>" rel="noopener noreferrer"><%= orgname %></a></h6>
+		</div>
+	<% } else { %>
+		<div class="container text-center" style="margin-top: 2rem;">
+			<h6 style="font-size: 1.1rem;">Below is your candidate application for 
+				<span style="color: #6e3cbc;"><a href="/singlelistings/<%= jobId %>"><%= profile %></a></span> at 
+					<% if (orgwebsite != '') { %>
+						<a href="<%= orgwebsite %>"><%= orgname %></a>
+					<% } else if (orgsocial != '') { %>
+						<a href="<%= orgsocial %>"><%= orgname %></a>
+					<% } else { %>
+						<a href="javascript:void(0)"><%= orgname %></a>
+					<% } %>
+		</div>
+	<% } %>
+	<div class="container mt-4">
+		<div class="header">
+			<div
+				class="name"
+				style="
+					display: flex;
+					justify-content: space-between;
+					position: relative;
+				"
+			>
+				<h4><%= data.name %></h4>	
+				<p style="font-weight: 500">
+					<% if (new Date().toLocaleDateString() == new Date(appliedOn).toLocaleDateString()) { %>
+						<span>Applied Today </span> 
+					<% } else { %> 
+						<span>Applied <%= Math.ceil(Math.abs(new Date() - new Date(appliedOn)) / (1000 * 60 * 60 * 24)) - 1 %> <%= (Math.ceil(Math.abs(new Date() - new Date(appliedOn)) / (1000 * 60 * 60 * 24)) - 1) == 1 ? 'day' : 'days' %> ago</span> 
+					<% } %>
+				</p>
+			</div>
+			<a href="mailto:<%= data.email %>"><i class="bi bi-envelope-fill"></i> &nbsp; <%= data.email %></a>
+			<p class="mt-3">
+				<a href="tel:<%= data.mobile %>"<i class="bi bi-telephone-fill"></i> &nbsp; +(91) <%= data.mobile %></a>
+			</p>
+			<span style="font-weight: 500; color: #666"><i class="bi bi-geo-alt-fill"></i> &nbsp; <%= data.city %></span>
+		</div>
+	</div>
+	<div class="container mt-4 mb-5 total-section">
+		<div id="cover-letter" class="cover-letter">
+			<h6 style="color: #6e3cbc">COVER LETTER</h6>
+			<div class="dropdown-divider"></div>
+			<p class="mt-4" style="font-weight: 500">
+				Why should you be hired for this role?
+			</p>
+			<p class="text-muted" style="text-align: justify"><%= coverletter %></p>
+		</div>
+		<div id="availability" class="availability" style="margin-top: 3rem">
+			<h6 style="color: #6e3cbc">AVAILABILITY</h6>
+			<div class="dropdown-divider"></div>
+			<p class="mt-4" style="font-weight: 500; text-align: justify">
+				Are you available <%= typework == 'Internship' ? "for" : "to" %> <%=
+				typework == 'Internship' ? duration : "" %> <%= typework == 'Internship'
+				? duration_period + "," : "" %> <%= typework == 'Internship' ?
+				"starting" : "start" %> immediately, for a <%= typework %> at <%=
+				jobcity == '' ? "Remote" : jobcity %>? If not, what is the time period
+				you are available for and the earliest date you can start this <%=
+				typework %> on?
+			</p>
+			<p class="text-muted" style="text-align: justify"><%= availability %></p>
+		</div>
+		<div id="education-box" class="education-box" style="margin-top: 3rem">
+			<h6 style="color: #6e3cbc">EDUCATION</h6>
+			<div class="dropdown-divider"></div>
+			<% if (data.education.length == 0) { %>
+			<div class="nodata">
+				<img src="../images/nodata.png" width="200" height="150" alt="" />
+			</div>
+			<% } %>
+			<div class="education-section mt-4">
+				<% data.education.forEach((arr) => { %> <% if (arr.degree == "PhD") { %>
+				<div class="education mt-4">
+					<p class="mt-3" style="color: #333">
+						<strong>PhD in <%= arr.stream %></strong>&nbsp;
+					</p>
+					<% if (arr.college != '') { %>
+					<p><%= arr.college %></p>
+					<% } else { %>
+					<p><%= arr.school %></p>
+					<% } %>
+					<!-- next -->
+					<% if (arr.e_complete) { %>
+					<p>Year of completion: <%= arr.complete %></p>
+					<% } else { %>
+					<p><%= arr.startyear %> - <%= arr.endyear %></p>
+					<% } %>
+					<!-- next  -->
+					<% if (arr.mark != '') { %> <% if (arr.marktype == 'Percentage') { %>
+					<p><%= arr.marktype %>: <%= arr.mark %>%</p>
+					<% } else { %>
+					<p><%= arr.marktype %>: <%= arr.mark %></p>
+					<% } %> <% } %>
+				</div>
+				<% } %> <% }) %> <% data.education.forEach((arr) => { %> <% if
+				(arr.degree == 'Post Graduation') { %>
+				<div class="education mt-4">
+					<p class="mt-3" style="color: #333">
+						<strong>Master of <%= arr.stream %></strong>&nbsp;
+					</p>
+					<% if (arr.college != '') { %>
+					<p><%= arr.college %></p>
+					<% } else { %>
+					<p><%= arr.school %></p>
+					<% } %>
+					<!-- next -->
+					<% if (arr.e_complete) { %>
+					<p>Year of completion: <%= arr.complete %></p>
+					<% } else { %>
+					<p><%= arr.startyear %> - <%= arr.endyear %></p>
+					<% } %>
+					<!-- next  -->
+					<% if (arr.mark != '') { %> <% if (arr.marktype == 'Percentage') { %>
+					<p><%= arr.marktype %>: <%= arr.mark %>%</p>
+					<% } else { %>
+					<p><%= arr.marktype %>: <%= arr.mark %></p>
+					<% } %> <% } %>
+				</div>
+				<% } %> <% }) %> <% data.education.forEach((arr) => { %> <% if
+				(arr.degree == 'Under Graduation') { %>
+				<div class="education mt-4">
+					<p class="mt-3" style="color: #333">
+						<strong>Bachelor of <%= arr.stream %></strong>&nbsp;
+					</p>
+					<% if (arr.college != '') { %>
+					<p><%= arr.college %></p>
+					<% } else { %>
+					<p><%= arr.school %></p>
+					<% } %>
+					<!-- next -->
+					<% if (arr.e_complete) { %>
+					<p>Year of completion: <%= arr.complete %></p>
+					<% } else { %>
+					<p><%= arr.startyear %> - <%= arr.endyear %></p>
+					<% } %>
+					<!-- next  -->
+					<% if (arr.mark != '') { %> <% if (arr.marktype == 'Percentage') { %>
+					<p><%= arr.marktype %>: <%= arr.mark %>%</p>
+					<% } else { %>
+					<p><%= arr.marktype %>: <%= arr.mark %></p>
+					<% } %> <% } %>
+				</div>
+				<% } %> <% }) %> <% data.education.forEach((arr) => { %> <% if
+				(arr.degree == 'Diploma') { %>
+				<div class="education mt-4">
+					<p class="mt-3" style="color: #333">
+						<strong>Diploma in <%= arr.stream %></strong>&nbsp;
+					</p>
+					<% if (arr.college != '') { %>
+					<p><%= arr.college %></p>
+					<% } else { %>
+					<p><%= arr.school %></p>
+					<% } %>
+					<!-- next -->
+					<% if (arr.e_complete) { %>
+					<p>Year of completion: <%= arr.complete %></p>
+					<% } else { %>
+					<p><%= arr.startyear %> - <%= arr.endyear %></p>
+					<% } %>
+					<!-- next  -->
+					<% if (arr.mark != '') { %> <% if (arr.marktype == 'Percentage') { %>
+					<p><%= arr.marktype %>: <%= arr.mark %>%</p>
+					<% } else { %>
+					<p><%= arr.marktype %>: <%= arr.mark %></p>
+					<% } %> <% } %>
+				</div>
+				<% } %> <% }) %> <% data.education.forEach((arr) => { %> <% if
+				(arr.degree == 'Senior Secondary (XII)') { %>
+				<div class="education mt-4">
+					<p class="mt-3" style="color: #333">
+						<strong><%= arr.degree %>, <%= arr.stream %> Education</strong
+						>&nbsp;
+					</p>
+					<% if (arr.college != '') { %>
+					<p><%= arr.college %></p>
+					<% } else { %>
+					<p><%= arr.school %></p>
+					<% } %>
+					<!-- next -->
+					<% if (arr.e_complete) { %>
+					<p>Year of completion: <%= arr.complete %></p>
+					<% } else { %>
+					<p><%= arr.startyear %> - <%= arr.endyear %></p>
+					<% } %>
+					<!-- next  -->
+					<% if (arr.mark != '') { %> <% if (arr.marktype == 'Percentage') { %>
+					<p><%= arr.marktype %>: <%= arr.mark %>%</p>
+					<% } else { %>
+					<p><%= arr.marktype %>: <%= arr.mark %></p>
+					<% } %> <% } %>
+				</div>
+				<% } %> <% }) %> <% data.education.forEach((arr) => { %> <% if
+				(arr.degree == 'Secondary (X)') { %>
+				<div class="education mt-4">
+					<p class="mt-3" style="color: #333">
+						<strong><%= arr.degree %> Education</strong>&nbsp;
+					</p>
+					<% if (arr.college != '') { %>
+					<p><%= arr.college %></p>
+					<% } else { %>
+					<p><%= arr.school %></p>
+					<% } %>
+					<!-- next -->
+					<% if (arr.e_complete) { %>
+					<p>Year of completion: <%= arr.complete %></p>
+					<% } else { %>
+					<p><%= arr.startyear %> - <%= arr.endyear %></p>
+					<% } %>
+					<!-- next  -->
+					<% if (arr.mark != '') { %> <% if (arr.marktype == 'Percentage') { %>
+					<p><%= arr.marktype %>: <%= arr.mark %>%</p>
+					<% } else { %>
+					<p><%= arr.marktype %>: <%= arr.mark %></p>
+					<% } %> <% } %>
+				</div>
+				<% } %> <% }) %>
+			</div>
+		</div>
+		<div id="jobintern-box" class="jobintern-box" style="margin-top: 4rem">
+			<h6 style="color: #6e3cbc">JOB / INTERNSHIPS</h6>
+			<div class="dropdown-divider"></div>
+			<% if (data.jobintern.length == 0) { %>
+			<div class="nodata">
+				<img src="../images/nodata.png" width="200" height="150" alt="" />
+			</div>
+			<% } %>
+			<div class="job-section mt-4">
+				<% data.jobintern.forEach((arr) => { %>
+				<div class="job mt-4">
+					<p style="color: #333">
+						<strong><%= arr.profile %> &nbsp;</strong>
+					</p>
+					<% if (arr.remote) { %>
+					<p>
+						<i class="bi bi-building"></i>&nbsp;&nbsp;<%= arr.org %>, Online
+					</p>
+					<% } else { %>
+					<p>
+						<i class="bi bi-building"></i>&nbsp;&nbsp;<%= arr.org %>, <%=
+						arr.location %>
+					</p>
+					<% } if (arr.current) { %>
+					<p>
+						<%= new Date(arr.startdate).toLocaleDateString("en-us", {month:
+						"short"}) %> <%= new Date(arr.startdate).getFullYear() %> - Present
+					</p>
+					<% } else { %>
+					<p>
+						<%= new Date(arr.startdate).toLocaleDateString("en-us", {month:
+						"short"}) %> <%= new Date(arr.startdate).getFullYear() %> - <%= new
+						Date(arr.enddate).toLocaleDateString("en-us", {month: "short"}) %>
+						<%= new Date(arr.enddate).getFullYear() %>
+					</p>
+					<% } %>
+
+					<p><%= arr.desc %></p>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+		<div id="training-box" class="training-box" style="margin-top: 4rem">
+			<h6 style="color: #6e3cbc">TRAININGS / COURSES</h6>
+			<div class="dropdown-divider"></div>
+			<% if (data.training.length == 0) { %>
+			<div class="nodata">
+				<img src="../images/nodata.png" width="200" height="150" alt="" />
+			</div>
+			<% } %>
+			<div class="training-section mt-4">
+				<% data.training.forEach((arr) => { %>
+				<div class="training mt-4">
+					<p style="color: #333">
+						<strong><%= arr.profile %> &nbsp; </strong>
+					</p>
+					<% if (arr.remote) { %>
+					<p><%= arr.org %>, Online</p>
+					<% } else { %>
+					<p><%= arr.org %>, <%= arr.loc %></p>
+					<% } %> <% if (arr.current) { %>
+					<p>
+						<%= new Date(arr.startdate).toLocaleDateString("en-us", {month:
+						'short'}) %> 2021 - Present
+					</p>
+					<% } else { %>
+					<p>
+						<%= new Date(arr.startdate).toLocaleDateString("en-us", {month:
+						'short'}) %> <%= new Date(arr.startdate).getFullYear() %> - <%= new
+						Date(arr.enddate).toLocaleDateString("en-us", {month: 'short'}) %>
+						<%= new Date(arr.enddate).getFullYear() %>
+					</p>
+					<% } %>
+
+					<p><%= arr.desc %></p>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+		<div id="projects-box" class="projects-box" style="margin-top: 4rem">
+			<h6 style="color: #6e3cbc">ACADEMICS / PERSONAL PROJECTS</h6>
+			<div class="dropdown-divider"></div>
+			<% if (data.project.length == 0) { %>
+			<div class="nodata">
+				<img src="../images/nodata.png" width="200" height="150" alt="" />
+			</div>
+			<% } %>
+			<div class="project-section mt-4">
+				<% data.project.forEach((arr) => { %>
+				<div class="project mt-4">
+					<p style="color: #333">
+						<strong><%= arr.title %> &nbsp; </strong>
+					</p>
+					<% if (arr.current) { %>
+					<p>
+						<%= new Date(arr.startdate).toLocaleDateString("en-us", {month:
+						'short'}) %> <%= new Date(arr.startdate).getFullYear() %> - Present
+					</p>
+					<% } else { %>
+					<p>
+						<%= new Date(arr.startdate).toLocaleDateString("en-us", {month:
+						'short'}) %> <%= new Date(arr.startdate).getFullYear() %> - <%= new
+						Date(arr.enddate).toLocaleDateString("en-us", {month: 'short'}) %>
+						<%= new Date(arr.enddate).getFullYear() %>
+					</p>
+					<% } %>
+
+					<p>
+						<a href="<%= arr.link %>" target="_blank" rel="noopener noreferrer"
+							><%= arr.link %> &nbsp; <i class="bi bi-box-arrow-up-right"></i
+						></a>
+					</p>
+					<p><%= arr.desc %></p>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+		<div id="skills-box" class="skills-box" style="margin-top: 4rem">
+			<h6 style="color: #6e3cbc">SKILLS / ABILITIES</h6>
+			<div class="dropdown-divider"></div>
+			<% if (data.skills.length == 0) { %>
+			<div class="nodata">
+				<img src="../images/nodata.png" width="200" height="150" alt="" />
+			</div>
+			<% } %>
+			<div class="skill-section row mt-4">
+				<% data.skills.forEach((arr) => { %>
+				<div class="skills col-lg-4 col-sm-6">
+					<span style="font-weight: 600; color: #333"><%= arr.skill %></span>
+					<br />
+					<span class="text-muted"><%= arr.skilllevel %></span>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+		<div id="portfolio-box" class="portfolio-box" style="margin-top: 2.7rem">
+			<h6 style="color: #6e3cbc">PORTFOLIO / WORK SAMPLES</h6>
+			<div class="dropdown-divider"></div>
+			<% if (data.portfolio.length == 0) { %>
+			<div class="nodata">
+				<img src="../images/nodata.png" width="200" height="150" alt="" />
+			</div>
+			<% } %>
+			<div class="portfolio-section row mt-2">
+				<% data.portfolio.forEach((arr) => { %> <% if (arr.blog) { %>
+				<div class="portfolio col-md-6 mt-4">
+					<p style="font-weight: 500">
+						<i class="bi bi-journal"></i>&nbsp; Blog link &nbsp;
+					</p>
+					<p>
+						<a href="<%= arr.blog %>"><%= arr.blog %></a>
+					</p>
+				</div>
+				<% } %> <% if (arr.github != '') { %>
+				<div class="portfolio col-md-6 mt-4">
+					<p style="font-weight: 500">
+						<i class="bi bi-github"></i> &nbsp; Github profile &nbsp;
+					</p>
+					<p>
+						<a href="<%= arr.github %>"><%= arr.github %></a>
+					</p>
+				</div>
+				<% } %> <% if (arr.play != '') { %>
+				<div class="portfolio col-md-6 mt-4">
+					<p style="font-weight: 500">
+						<ion-icon
+							name="logo-google-playstore"
+							style="height: 1rem"
+						></ion-icon>
+						&nbsp; Developer Account link &nbsp;
+					</p>
+					<p>
+						<a href="<%= arr.play %>"><%= arr.play %></a>
+					</p>
+				</div>
+				<% } %> <% if (arr.behance != '') { %>
+				<div class="portfolio col-md-6 mt-4">
+					<p style="font-weight: 500">
+						<i class="bi bi-behance"></i> &nbsp; Behance portfolio link &nbsp;
+					</p>
+					<p>
+						<a href="<%= arr.behance %>"><%= arr.behance %></a>
+					</p>
+				</div>
+				<% } %> <% if (arr.sample != '') { %>
+				<div class="portfolio col-md-6 mt-4">
+					<p style="font-weight: 500">
+						<i class="bi bi-link"></i>&nbsp; Other portfolio link &nbsp;
+					</p>
+					<p>
+						<a href="<%= arr.sample %>"><%= arr.sample %></a>
+					</p>
+				</div>
+				<% } %> <% }) %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('./partials/footer.ejs') -%>

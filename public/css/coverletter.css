@@ -1,0 +1,46 @@
+.container-fluid {
+	padding: 1rem 3rem;
+}
+
+.cover-letter {
+	background-color: #fff;
+	padding: 2rem;
+	border-radius: 8px;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+.accordion {
+	background-color: rgba(110, 60, 188, 0.4);
+	color: rgb(110, 60, 188);
+}
+
+.btn-large {
+	box-shadow: none !important;
+	outline: none !important;
+}
+
+::placeholder {
+	font-size: 0.9rem;
+	color: #888;
+}
+
+.spin {
+	animation: spin 2s infinite;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@media (max-width: 600px) {
+	.container-fluid {
+		margin-bottom: 2rem;
+		padding: 0;
+		padding: 0.3rem;
+	}
+}

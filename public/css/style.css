@@ -1,0 +1,166 @@
+body {
+	font-family: "Rubik", sans-serif;
+	overflow-x: hidden;
+	background-color: #6e3cbc;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%237267cb' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%238f81ff' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%236c62c1' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%238679ef' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23675db7' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%237d71de' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%236158ad' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%237469ce' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%235b53a4' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%236b61bf' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23564e9a' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%236259af' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-track {
+	background: #6e3cbc;
+}
+::-webkit-scrollbar-thumb {
+	background: #fff;
+	transition: all 0.5s;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.back {
+	position: absolute;
+	top: 20px;
+	background: #fff;
+	padding: 0.2rem 0.6rem;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #6e3cbc;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+a {
+	color: #7267cb;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #7267cb;
+}
+
+input[type="checkbox"] {
+	cursor: pointer;
+}
+
+.form-control,
+.form-select {
+	box-shadow: none !important;
+	outline: none !important;
+	border: 1px solid #ccc;
+}
+
+.form-control:focus,
+.form-select:focus {
+	box-shadow: none !important;
+	outline: none !important;
+	border: 1px solid #7267cb;
+}
+
+.btn:hover {
+	color: #fff;
+}
+
+::placeholder {
+	font-size: 0.9rem;
+}
+
+.btn-violet {
+	background-color: #6e3cbc;
+	color: #fff;
+	font-weight: 600;
+}
+
+.form-control,
+.form-select {
+	transition: all 0.1s;
+}
+
+.form-control:focus,
+.form-select:focus,
+.btn:focus {
+	box-shadow: none !important;
+	outline: none !important;
+	border: 1px solid #ccc;
+}
+
+.btn-violet {
+	background-color: #6e3cbc;
+	color: #fff;
+	border: none;
+}
+
+.btn-violet:focus,
+.btn-violet:active {
+	color: #fff;
+	border: none !important;
+}
+
+.btn-violet-invert {
+	color: #fff;
+	border: none;
+	font-weight: 600;
+	background-color: #6e3cbc;
+	outline: none !important;
+	border: none !important;
+}
+
+.btn-outline-violet {
+	background-color: #fff;
+	color: #6e3cbc;
+	border: 1px solid #6e3cbc;
+	font-weight: 500;
+	padding-top: 0.2rem;
+}
+.btn-outline-violet:hover {
+	color: #6e3cbc;
+}
+
+::placeholder {
+	font-size: 1rem;
+}
+
+.largecheckbox {
+	width: 15px;
+	height: 15px;
+	accent-color: #6e3cbc;
+}
+
+.form-text {
+	color: #f90716;
+}
+
+.largeradio {
+	width: 15px;
+	height: 15px;
+	accent-color: #6e3cbc;
+}
+
+.form-control:focus,
+.form-select:focus {
+	border: 1px solid #6e3cbc;
+}
+
+@media (max-width: 500px) {
+	::-webkit-scrollbar {
+		width: 1px;
+	}
+	::-webkit-scrollbar-track {
+		background: #6e3cbc;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, 0.2);
+		transition: all 0.5s;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background-color: rgba(0, 0, 0, 0.4);
+		transition: all 0.5s;
+	}
+}

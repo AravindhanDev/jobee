@@ -1,0 +1,99 @@
+.form-section {
+	padding: 2rem;
+}
+
+.info-text {
+	font-size: 0.95rem;
+}
+
+.form-container {
+	background-color: #fdfdfd;
+	padding: 2rem;
+	border-radius: 9px;
+	width: 30rem;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+.spin {
+	animation: spin 2s infinite;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.warning {
+	background-color: rgba(241, 208, 10, 0.3);
+	border: 2px solid #f1d00a;
+	font-weight: bold;
+	color: #ea5c2b;
+	padding: 0.5rem;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.eye {
+	color: #222 !important;
+}
+
+.input-group .form-control:focus + .eye {
+	border: 1px solid #6e3cbc;
+}
+
+.register-img {
+	width: 22rem;
+}
+
+.login-img {
+	width: 17rem;
+}
+
+.form-text {
+	color: #f90716;
+}
+
+.form-control,
+.btn {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.input-group .form-control {
+	border-right: 0;
+}
+
+.input-group .btn {
+	border: 1px solid #ccc;
+	border-left: 0;
+}
+
+@media (max-width: 800px) {
+	.img-container {
+		margin-top: 3rem;
+	}
+}
+
+@media (max-width: 550px) {
+	.info-text {
+		font-size: 0.95rem;
+	}
+	.form-section {
+		padding: 3rem 0;
+	}
+	.form-container {
+		width: 96%;
+		padding: 1.5rem;
+	}
+	.img-container {
+		margin-top: 4rem;
+	}
+	::placeholder {
+		font-size: 0.9rem;
+	}
+}

@@ -1,0 +1,143 @@
+.form-container {
+	margin: 2rem;
+	background-color: #fff;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+.row div {
+	margin-top: 0.7rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+	border: 1px solid #6e3cbc;
+}
+
+.btn-violet:hover {
+	color: #fff;
+}
+
+.btn-light-violet {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	color: #6e3cbc;
+}
+
+.btn-light-violet:hover {
+	color: #6e3cbc;
+	border: 1px solid transparent;
+	box-shadow: 2px 2px 6px #ddd;
+}
+
+input[type="checkbox"] {
+	cursor: pointer;
+}
+
+.form-text {
+	color: #f90716;
+}
+
+.char_count {
+	position: absolute;
+	bottom: 4%;
+	right: 2%;
+	color: #999;
+	background-color: #fff;
+}
+
+.perks div {
+	margin: 1rem 0 0 0;
+	display: flex;
+	justify-content: flex-start;
+	align-items: baseline;
+}
+
+.perks div label {
+	padding-left: 0.8rem;
+	font-size: 1rem;
+}
+
+.neither {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.note {
+	border: 1px solid #6e3cbc;
+	border-radius: 7px;
+	background-color: rgba(110, 60, 188, 0.2);
+	padding: 1rem;
+}
+
+.skillcrud i {
+	cursor: pointer;
+	transition: all 0.4s;
+}
+
+.skillname {
+	padding: 0.1rem 1.3rem;
+	background-color: rgba(110, 60, 188, 0.2);
+	border: 2px solid #6e3cbc;
+	border-radius: 30px;
+	font-size: 0.9rem;
+}
+
+.skillcrud i:hover {
+	color: #6e3cbc;
+}
+
+.skilllist {
+	display: flex;
+	justify-content: space-between;
+}
+
+.page {
+	position: absolute;
+	right: 2%;
+}
+
+.time {
+	animation: spin 2s infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@media (max-width: 500px) {
+	.form-container {
+		margin: 0.5rem;
+	}
+	section h4 {
+		font-size: 1rem;
+	}
+	section label {
+		font-size: 0.9rem;
+	}
+	section .form-control,
+	section .form-select {
+		font-size: 0.9rem;
+	}
+	::placeholder {
+		font-size: 0.9rem;
+	}
+	p.notes {
+		font-size: 0.9rem;
+	}
+	.text-muted {
+		font-size: 0.9rem;
+	}
+	.page {
+		right: 4%;
+		font-size: 0.8rem;
+	}
+}

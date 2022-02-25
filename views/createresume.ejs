@@ -1,0 +1,105 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/createresume.css" />
+<div class="form-container">
+	<section class="section1">
+		<h4>Personal Details</h4>
+		<div class="row personal">
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="angela"
+						id="name"
+					/>
+					<div class="form-text d-none">
+						<i class="fas fa-exclamation-circle"></i> Name is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="locality">Locality</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Your Street Address"
+						id="locality"
+					/>
+					<div class="form-text d-none">
+						<i class="fas fa-exclamation-circle"></i> Locality is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="city">City</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Chennai"
+						id="city"
+					/>
+					<div class="form-text d-none">
+						<i class="fas fa-exclamation-circle"></i> City is required
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section2 mt-5">
+		<h4>Contact Details</h4>
+		<div class="row contact">
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="angela@bauer.com"
+						id="email"
+					/>
+					<div class="form-text d-none">
+						<i class="fas fa-exclamation-circle"></i> Email is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="mobile">Mobile</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="number"
+						class="form-control"
+						placeholder="+(91) 98765 43210"
+						id="mobile"
+					/>
+					<div class="form-text d-none">
+						<i class="fas fa-exclamation-circle"></i> Mobile Number is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="otherlink">Website</label>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="https://app.uxcel.com"
+						id="otherlink"
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+	<button class="mt-5 btn btn-violet" id="submit">Post Details</button>
+</div>
+<script src="../js/createresume.js"></script>
+
+<%- include('./partials/footer.ejs') -%>

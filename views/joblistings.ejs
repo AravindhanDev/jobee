@@ -1,0 +1,235 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/joblistings.css" />
+<div
+	class="container"
+	style="display: flex; justify-content: flex-end; align-items: flex-end"
+>
+	<div class="menu">
+		<i class="bi bi-grid-3x3-gap"></i>
+	</div>
+	<div class="menubar d-none">
+		<ul>
+			<% if (acctype == 'Employer') { %>
+			<li>
+				<a href="/postjob"
+					><i class="bi bi-file-post-fill"></i> &nbsp; Post Job</a
+				>
+			</li>
+			<div class="dropdown-divider"></div>
+			<li>
+				<a href="/jobsposted"
+					><i class="bi bi-list-check"></i> &nbsp; Jobs Posted</a
+				>
+			</li>
+			<div class="dropdown-divider"></div>
+			<% } %> <% if (acctype == 'Student') { %>
+			<li>
+				<a href="/jobsapplied"
+					><i class="bi bi-journal-check"></i> &nbsp; Jobs Applied</a
+				>
+			</li>
+			<div class="dropdown-divider"></div>
+			<li>
+				<a href="/resumedetails"
+					><i class="bi bi-file-earmark-person"></i> &nbsp; Resume Details</a
+				>
+			</li>
+			<div class="dropdown-divider"></div>
+			<% } %>
+			<li>
+				<a href="/logout"><i class="bi bi-power"></i> &nbsp; Logout</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="container" id="form-container">
+	<div class="row">
+		<div class="col-lg-4 form-box">
+			<div class="no-content text-center" style="color: #6e3cbc">
+				<i class="bi bi-funnel-fill"></i>
+				Filters
+			</div>
+			<div class="filter-form">
+				<div class="filter-header d-flex justify-content-between">
+					<h6 style="color: #6e3cbc" class="filter-text">
+						<i class="bi bi-funnel-fill"></i>
+						&nbsp;Filters
+					</h6>
+					<span class="close">
+						<i class="fas fa-times" style="font-size: 1rem"></i>
+					</span>
+				</div>
+				<div class="form-group" style="margin-top: 2.1rem">
+					<label for="category">Category</label>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="e.g. Marketing"
+						id="category"
+					/>
+				</div>
+				<div class="form-group mt-3">
+					<label for="location">Location</label>
+					<input
+						type="text"
+						id="location"
+						class="form-control"
+						placeholder="e.g. Chennai"
+					/>
+				</div>
+				<div
+					class="form-group mt-3"
+					style="display: flex; justify-content: space-between"
+				>
+					<label for="remotejobs">Remote Jobs</label>
+					<input type="checkbox" class="largecheckbox" id="remotejobs" />
+				</div>
+				<div
+					class="form-group mt-3"
+					style="display: flex; justify-content: space-between"
+				>
+					<label for="internships">Internships</label>
+					<input type="checkbox" class="largecheckbox" id="internships" />
+				</div>
+				<p class="mt-3" style="text-align: right; font-weight: 600">
+					<a href="javascript:void(0)" id="clearall">Clear all</a>
+				</p>
+				<p style="text-align: center; font-weight: 600">Search</p>
+				<input
+					type="text"
+					placeholder="e.g. Design, Chennai, WebDev"
+					class="form-control"
+					id="search"
+				/>
+			</div>
+		</div>
+		<div class="col-lg-8 job-box">
+			<div id="job-box">
+				<% if (data.length != 0) { %> <% data.forEach((arr) => { %>
+				<div class="job-container">
+					<h5>
+						<a href="/singlelistings/<%= arr._id %>"
+							><i class="bi bi-building"></i> &nbsp; <%= arr.profile %></a
+						>
+					</h5>
+					<p>
+						<% if (arr.orgwebsite != '') { %>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="<%= arr.orgwebsite %>"
+							><%= arr.orgname %></a
+						>
+						<% } else if (arr.orgsocial != '') { %>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="<%= arr.orgsocial %>"
+							><%= arr.orgname %></a
+						>
+						<% } else { %>
+						<a href="javascript:void(0)"><%= arr.orgname %></a>
+						<% } %> &nbsp; <% if (arr.isverified === 'true') { %>
+						<span>
+							<i class="bi bi-patch-check-fill" style="color: #34b283"></i>
+						</span>
+						<% } %>
+					</p>
+					<p class="mt-4 location">
+						<% if (arr.jobcity != '') { %>
+						<i class="bi bi-geo-alt-fill"></i>
+						&nbsp;&nbsp; <%= arr.jobcity %> <% } else { %>
+						<i class="bi bi-house-door-fill"></i>
+						&nbsp;&nbsp; Remote <% }%>
+					</p>
+					<div class="row" style="padding: 1rem 0.15rem">
+						<div class="col-lg-4 col-sm-6">
+							<span style="font-size: 0.9rem" class="text-muted"
+								><i class="far fa-play-circle"></i> &nbsp; START DATE</span
+							>
+							<span>Immediately</span>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<span style="font-size: 0.9rem" class="text-muted"
+								><i class="far fa-money-bill-alt"></i> &nbsp; CTC</span
+							>
+							<span>
+								<% let jSalary = "", iSalary = "", l = "", h = "" %> <% if
+								(arr.persalary == "Month") { %> <% jSalary = arr.salary * 12; %>
+								<% iSalary = arr.salary; %> <% if (jSalary.toString().length ==
+								6) { %> <% h = jSalary.toString().substr(0, 1); %> <% l =
+								jSalary.toString().substr(1, 1); %> <% } if
+								(jSalary.toString().length == 7) { %> <% h =
+								jSalary.toString().substr(0, 2); %> <% l =
+								jSalary.toString().substr(2, 1); %> <% } %> <% jSalary =
+								`${h}.${l} - ${h} LPA`; %> <% iSalary =
+								`${iSalary}/${arr.persalary}`; %> <% } else { %> <% jSalary =
+								arr.salary * 52; %> <% iSalary = arr.salary; %> <% if
+								(jSalary.toString().length == 6) { %> <% h =
+								jSalary.toString().substr(0, 1); %> <% l =
+								jSalary.toString().substr(1, 1); %> <% } if
+								(jSalary.toString().length == 7) { %> <% h =
+								jSalary.toString().substr(0, 2); %> <% l =
+								jSalary.toString().substr(2, 1); %> <% } %> <% jSalary =
+								`${h}.${l} - ${h} LPA`; %> <% iSalary =
+								`${iSalary}/${arr.persalary}`; %> <% } %> <% if (arr.typework ==
+								"Full Time Job") { %> &#8377; <%= jSalary %> <% } else { %>
+								&#8377; <%= iSalary %> <% } %>
+							</span>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<span style="font-size: 0.9rem" class="text-muted"
+								><i class="bi bi-calendar2-day"></i> &nbsp; APPLY BY</span
+							>
+							<span
+								><%= new Date(arr.applyby).getDate() %> <%= new
+								Date(arr.applyby).toLocaleDateString('en-us', {month: 'short'})
+								%>' <%= new Date(arr.applyby).toLocaleDateString('en-us', {year:
+								'2-digit'}) %></span
+							>
+						</div>
+					</div>
+					<div class="job-desc" style="padding: 1rem 0.15rem">
+						<% if (arr.type == 'Work from home') { %>
+						<i class="bi bi-house"></i>
+						&nbsp;
+						<span class="text-muted"
+							>The hiring for this job will be online and the company will
+							provide work from home deferred joining till current COVID-19
+							situation improves.</span
+						>
+						<% } %>
+					</div>
+					<div class="job-footer mt-3">
+						<div class="job-details">
+							<span class="jobtype"><%= arr.typework %></span>
+						</div>
+						<div class="viewfulldetails">
+							<a href="/singlelistings/<%= arr._id %>"
+								>View details &nbsp;
+								<i class="fas fa-chevron-right" style="font-size: 0.8rem"></i
+							></a>
+						</div>
+					</div>
+				</div>
+				<% }) %> <% } else { %>
+				<div class="job-container text-center">
+					<img
+						src="../images/nodata.png"
+						style="width: 300px; height: 200px"
+						alt=""
+					/>
+					<br /><br />
+					<i>No Data Available</i>
+				</div>
+				<% } %>
+			</div>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../js/joblistings.js"></script>
+
+<%- include('./partials/footer.ejs') -%>

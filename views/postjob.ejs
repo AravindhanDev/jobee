@@ -1,0 +1,478 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/postjob.css" />
+<div class="form-container" style="position: relative">
+	<p
+		style="text-align: right; font-weight: bold"
+		class="page btn btn-violet btn-sm"
+	>
+		<span>1</span> / 2
+	</p>
+	<section class="section1">
+		<div class="head" style="display: flex; justify-content: space-between">
+			<h4>Personal Details</h4>
+		</div>
+		<div class="row personal">
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="firstname">First name</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Angela"
+						id="firstname"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; First name is
+						required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="lastname">Last name</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Bauer"
+						id="lastname"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Last name is
+						required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="email">E-mail</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="angela@bauer.com"
+						id="email"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Email is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="mobile">Mobile</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="number"
+						class="form-control"
+						placeholder="+(91) 98765 43210"
+						id="mobile"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Mobile no is
+						required
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section2 mt-5">
+		<h4>Organization Details</h4>
+		<div class="row orgdetails">
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="orgname"> Name</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="WebDev Solutions"
+						id="orgname"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Organization name is
+						required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="form-group">
+					<label for="orglocality">Locality</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="17635 Sherin Complex, Museum Parkway"
+						id="orglocality"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Locality is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="orgcity">City</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Chennai"
+						id="orgcity"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; City is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="form-group" style="position: relative">
+					<label for="orgdescription">Description</label>
+					<strong style="color: #f90716">*</strong>
+					<textarea
+						rows="3"
+						style="resize: none"
+						class="form-control"
+						id="orgdescription"
+						maxlength="200"
+						placeholder="Not exceed more than 200 charecters"
+					></textarea>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Description is
+						required
+					</div>
+					<div class="char_count"><span class="count">0</span> / 200</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section3 mt-5">
+		<h4>
+			Organization Verification &nbsp;
+			<span
+				id="orgvertab"
+				style="font-size: 0.9rem; color: #49af41"
+				class="d-none"
+				><i class="fas fa-clipboard-check"></i> Verified</span
+			>
+		</h4>
+		<span class="text-muted"
+			>Using any one of the options below, get your organization verified and
+			start posting jobs</span
+		>
+		<div class="row orgverification mt-3">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="orgwebsite">Website</label>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="freecodecamp.org"
+						id="orgwebsite"
+					/>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="orgsocial">Active Social Media Profile</label>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Minimum 900-1100 followers"
+						id="orgsocial"
+					/>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="form-group" class="neither">
+					<input type="checkbox" class="largecheckbox" id="isverified" />
+					<label for="isverified"> &nbsp; I have neither of the above</label>
+				</div>
+			</div>
+			<div class="col-lg-9"></div>
+			<div class="col-lg-6">
+				<p class="note d-none notes">
+					<strong>Kindly note:</strong> Sharing the above information would help
+					us to verify your organization & provide you a quicker service. Not
+					providing this detail would lead to an additional delay in processing
+					of your jobs. If you still want to proceed?
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="section4 d-none">
+		<h4>Job Details</h4>
+		<div class="row profile">
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="profile">Profile</label>
+					<strong style="color: #f90716">*</strong>
+					<select id="profile" class="form-select">
+						<option>Business Development (Sales)</option>
+						<option>Graphic Design</option>
+						<option>Social Media Marketing</option>
+						<option>Operations</option>
+						<option>Digital Marketing</option>
+						<option>Law/Legal</option>
+						<option>Web Development</option>
+						<option>Content Writing</option>
+						<option>Marketing</option>
+						<option>Mobile App Development</option>
+						<option>Human Resources (HR)</option>
+						<option>Campus Ambassador</option>
+						<option>Other</option>
+					</select>
+					<input
+						type="text"
+						id="profileinput"
+						class="form-control d-none"
+						placeholder="eg: Backend Web Development"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp;Job Profile is
+						required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="type">Type</label>
+					<strong style="color: #f90716">*</strong>
+					<select id="type" class="form-select">
+						<option>Regular in office</option>
+						<option>Work from home</option>
+					</select>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Job Type is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="typework">Work</label>
+					<strong style="color: #f90716">*</strong>
+					<select id="typework" class="form-select">
+						<option>Full Time Job</option>
+						<option>Internship</option>
+					</select>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Job Type is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="jobcity">City</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="text"
+						class="form-control"
+						id="jobcity"
+						placeholder="Chennai"
+					/>
+					<div class="form-text">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; City is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="openings">Number of openings</label>
+					<input
+						type="number"
+						class="form-control"
+						id="openings"
+						placeholder="eg: 3"
+					/>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 durationdays d-none">
+				<div class="form-group">
+					<label for="chooseduration">Choose Duration</label>
+					<strong style="color: #f90716">*</strong>
+					<select id="chooseduration" class="form-select">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+					</select>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Please choose
+						duration
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 durationperiods d-none">
+				<div class="form-group">
+					<label for="choosedurationperiod">&nbsp;</label>
+					<select id="choosedurationperiod" class="form-select">
+						<option>months</option>
+						<option>weeks</option>
+					</select>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Please choose
+						duration
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="applyby">Apply By</label>
+					<strong style="color: #f90716">*</strong>
+					<input type="date" id="applyby" class="form-control" />
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp;Apply by is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 extra-space"></div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="whocanapply">Who can apply</label>
+					<strong style="color: #f90716">*</strong>
+					<textarea
+						id="whocanapply"
+						rows="3"
+						class="form-control"
+						style="resize: none"
+						placeholder="1. Candidates with experience in React Native development, AWS ecosystem, and GraphQL integration should apply"
+					></textarea>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; &nbsp; Who can apply
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="responsibilities">Responsibilites</label>
+					<textarea
+						id="responsibilities"
+						rows="3"
+						class="form-control"
+						style="resize: none"
+						placeholder="Job posts with detailed job description receive significantly more applications."
+					></textarea>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section5 d-none mt-5">
+		<h4>Salary & perks</h4>
+		<div class="row salary">
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="salary">Salary</label>
+					<strong style="color: #f90716">*</strong>
+					<input
+						type="number"
+						class="form-control"
+						placeholder="eg: &#8377;10,000"
+						id="salary"
+					/>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Salary is required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="form-group">
+					<label for="persalary">&nbsp;</label>
+					<select id="persalary" class="form-select">
+						<option value="week">/Week</option>
+						<option value="month">/Month</option>
+					</select>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Salary is required
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section6 d-none mt-5">
+		<div class="row perks">
+			<div class="col-lg-3">
+				<input type="checkbox" id="isflexible" class="largecheckbox" />
+				<label for="isflexible">Flexible Work Hours</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="isdresscode" class="largecheckbox" />
+				<label for="isdresscode">Informal Dress Code</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="isfivedays" class="largecheckbox" />
+				<label for="isfivedays">5 days a week</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="isbonus" class="largecheckbox" />
+				<label for="isbonus">Performance Bonus</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="ispaidleave" class="largecheckbox" />
+				<label for="ispaidleave">Paid Sick Leaves</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="isinsurance" class="largecheckbox" />
+				<label for="isinsurance">Insurance Plans</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="isdiscount" class="largecheckbox" />
+				<label for="isdiscount">Corporate Discounts</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="isretirement" class="largecheckbox" />
+				<label for="isretirement">Retirement Plans</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="istraining" class="largecheckbox" />
+				<label for="istraining">Employment Training</label>
+			</div>
+			<div class="col-lg-3">
+				<input type="checkbox" id="isprograms" class="largecheckbox" />
+				<label for="isprograms">Wellness Programs</label>
+			</div>
+		</div>
+	</section>
+	<section class="section7 d-none mt-5">
+		<h4>Skills required</h4>
+		<div class="row todolist">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="skills">eg: Microsoft Office, Tally, Java</label>
+					<strong style="color: #f90716">*</strong>
+					<div class="input-group">
+						<input
+							type="text"
+							class="form-control"
+							placeholder=""
+							id="skills"
+						/>
+						<button class="btn btn-sm btn-violet" id="add">Add</button>
+					</div>
+					<div class="form-text d-none">
+						<i class="bi bi-exclamation-circle"></i> &nbsp; Skills required
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6"></div>
+			<div class="col-lg-6 skillstodo mb-4"></div>
+		</div>
+	</section>
+
+	<div
+		class="btns mt-4"
+		style="display: flex; align-items: center; justify-content: space-between"
+	>
+		<button class="btn btn-light-violet btn-sm prev d-none">
+			<strong style="text-align: center">Previous</strong>
+		</button>
+		<button class="btn btn-violet btn-sm px-4 d-none next">Next</button>
+		<button class="btn btn-violet btn-sm px-4" id="submit">Next</button>
+	</div>
+</div>
+<script src="../js/postjob.js"></script>
+
+<%- include('./partials/footer.ejs') -%>

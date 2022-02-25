@@ -1,0 +1,81 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/jobsstatus.css" />
+<div
+	class="container-fluid"
+	style="display: flex; justify-content: flex-end; align-items: flex-end"
+>
+	<a class="back" href="/joblistings">
+		<i class="bi bi-backspace-fill" style="font-size: 1.4rem"></i>
+	</a>
+</div>
+<div class="container-fluid" style="margin-top: 3rem">
+	<div class="table-container table-responsive">
+		<h5 style="text-align: center">
+			My Applications &nbsp;
+			<i class="bi bi-file-earmark-check"></i>
+		</h5>
+		<table class="table text-center" style="margin-top: 1.9rem">
+			<thead>
+				<tr>
+					<th>COMPANY</th>
+					<th>PROFILE</th>
+					<th>APPLIED ON</th>
+					<th>NUMBER OF APPLICANTS</th>
+					<th>REVIEW <br />APPLICATION</th>
+					<th>APPLICATION STATUS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if (data.length != 0) { %> <% data.forEach((arr) => { %>
+				<tr>
+					<td><%= arr.company %></td>
+					<td>
+						<a href="/singlelistings/<%= arr.jobId %>" style="font-weight: 500"
+							><%= arr.profile %>&nbsp;
+							<ion-icon name="arrow-redo-outline"></ion-icon
+						></a>
+					</td>
+					<td>
+						<%= new Date(arr.appliedOn).getDate() %> <%= new
+						Date(arr.appliedOn).toLocaleDateString("en-us", {month: "short"})
+						%>' <%= new Date(arr.appliedOn).getFullYear().toString().slice(2) %>
+					</td>
+					<td><%= arr.openings %></td>
+					<td>
+						<a
+							href="/appliedstudentresume?jobId=<%= arr.jobId %>&resumeId=<%= arr.resumeId %>"
+						>
+							<i class="bi bi-file-earmark-spreadsheet"></i>
+						</a>
+					</td>
+					<td style="text-align: center">
+						<% if (arr.status == 'Applied') { %>
+						<span class="status"
+							><i class="bi bi-emoji-smile"></i> &nbsp; Applied</span
+						>
+						<% } if (arr.status == 'Not Selected') { %>
+						<span class="status notselected"
+							><i class="bi bi-emoji-frown"></i> &nbsp; Not Selected</span
+						>
+						<% } if (arr.status == 'Hired') { %>
+						<span class="status success"
+							><i class="bi bi-emoji-laughing"></i> &nbsp; Hired</span
+						>
+						<% } %>
+					</td>
+				</tr>
+				<% }) %> <% } else { %>
+				<tr>
+					<td colspan="6">
+						<i>No Data Available</i>
+					</td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<script src="../js/jobsapplied.js"></script>
+
+<%- include('./partials/footer.ejs') -%>

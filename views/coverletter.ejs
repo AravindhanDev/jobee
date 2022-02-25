@@ -1,0 +1,59 @@
+<%- include('./partials/header.ejs') -%>
+
+<link rel="stylesheet" href="../css/coverletter.css" />
+
+<div
+	class="container-fluid back-box"
+	style="display: flex; justify-content: flex-end; align-items: flex-end"
+>
+	<div class="back" onclick="history.go(-1)">
+		<i class="bi bi-backspace-fill" style="font-size: 1.4rem"></i>
+	</div>
+</div>
+<div class="container-fluid mb-5" id="<%= user %>">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="cover-letter" id="<%= data._id %>">
+				<h4 style="color: #6e3cbc">
+					<%= data.profile %> at <%= data.orgname %>
+				</h4>
+				<h5 class="mt-5">Cover letter</h5>
+				<p>Why should you be hired for this role?</p>
+				<div class="form-group mt-4">
+					<textarea
+						id="coverletter"
+						style="resize: none"
+						rows="5"
+						class="form-control"
+						placeholder="Aravindhan, employers see the answer to this question even before they view your resume. Answer this question carefully and add relevant information like your skills/experience and why you find the role exciting."
+					></textarea>
+					<div class="form-text d-none" style="color: #f90716">
+						<i class="fas fa-exclamation-circle"></i> This field is required
+					</div>
+				</div>
+				<h5 class="mt-5">Availability</h5>
+				<p>
+					Please also mention if you are available full time or part time. If
+					part time, specify the number of hours you can spend on this
+					internship every day.
+				</p>
+				<div class="form-group mt-4">
+					<textarea
+						id="availability"
+						style="resize: none"
+						rows="5"
+						class="form-control"
+						placeholder="eg. I am available full time in chennai for the next 6 months, but will have exams for 15 days in June"
+					></textarea>
+					<div class="form-text d-none" style="color: #f90716">
+						<i class="fas fa-exclamation-circle"></i> This field is required
+					</div>
+				</div>
+				<button class="btn btn-violet mt-4" id="submit">Submit</button>
+			</div>
+		</div>
+	</div>
+	<script src="../js/coverletter.js"></script>
+
+	<%- include('./partials/footer.ejs') -%>
+</div>

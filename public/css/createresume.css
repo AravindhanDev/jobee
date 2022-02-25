@@ -1,0 +1,56 @@
+.form-container {
+	margin: 2rem;
+	background-color: #fff;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+.row div {
+	margin-top: 0.7rem;
+}
+
+.form-text {
+	color: #f90716;
+}
+
+.skillcrud i {
+	cursor: pointer;
+	transition: all 0.4s;
+}
+
+.skillname {
+	padding: 0.1rem 1.3rem;
+	background-color: rgba(110, 60, 188, 0.2);
+	border: 2px solid #6e3cbc;
+	border-radius: 30px;
+}
+
+.skillcrud i:hover {
+	color: #6e3cbc;
+}
+
+.skilllist {
+	display: flex;
+	justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+	.form-container {
+		margin: 0.5rem;
+	}
+	section h4 {
+		font-size: 1rem;
+	}
+	section label {
+		font-size: 0.9rem;
+	}
+	section .form-control,
+	section .form-select {
+		font-size: 0.9rem;
+	}
+	::placeholder {
+		font-size: 0.9rem;
+	}
+}

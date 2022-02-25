@@ -1,0 +1,32 @@
+.container {
+	width: 35rem;
+	margin-top: 2rem;
+	border-radius: 8px;
+	background: #ffffff;
+	padding: 2rem;
+	display: grid;
+	place-items: center;
+	box-shadow: 0 35px 68px 0 rgba(110, 60, 188, 0.42),
+		inset 0 -8px 16px 0 rgba(180, 145, 238, 0.53);
+}
+
+.goback {
+	padding: 0.5rem;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.goback:hover {
+	background-color: rgba(2, 2, 2, 0.1);
+	transition: all 0.3s;
+}
+
+.goback a:hover {
+	color: #000 !important;
+}
+
+@media (max-width: 600px) {
+	.container {
+		width: 90%;
+	}
+}
